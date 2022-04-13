@@ -1,0 +1,146 @@
+.menubar{
+    text-align: left;
+}
+
+.mobile-menu{
+    left: inherit;
+    right: -380px;
+}
+.mobileAdd{
+    left: inherit;
+    right: 0 !Important;
+}
+.custom.accordion-body ul li a{
+    margin-left: 0;
+    margin-right: 40px;
+}
+.custom.accordion-body ul li a i{
+    margin-right: 0;
+    margin-left: 10px;
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+}
+.mobile-logo i{
+    float: left;
+}
+.mobile-logo img{
+    margin-left: 0;
+    margin-right: 10px;
+}
+.sub-menu{
+    left: inherit;
+    right: 0;
+}
+.sub-menu > a{
+    text-align: right;
+}
+.privacy-policy {
+	text-align: left;
+}
+.footer-head ul li i {
+	margin-right: 0;
+	margin-left: 10px;
+}
+/*custom*/
+
+.menubar ul {
+    text-align: left;
+}
+.menubar ul li a i {
+    margin-right: 0;
+    margin-left: 10px;
+}
+.footer-head ul li .footer-feather {
+    margin-right: 0;
+    margin-left: 10px;
+}
+.submit-overlay {
+    position: absolute;
+    right: inherit;
+    left: 0;
+    background: var(--sc);
+    height: 100%;
+    padding: 0 12px;
+    overflow: hidden;
+    border-top-right-radius: 0;
+    border-bottom-right-radius:0;
+    
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.copyright-content p{
+    text-align: right;
+}
+.copyright-right{
+    text-align: left;
+}
+.copyright-right a {
+    color: var(--wc);
+    padding: 0px 10px;
+    border-left: none;
+    border-right: 1px solid var(--wc);
+
+}
+.copyright-right a:last-child {
+    padding-left: 0;
+    padding-right: 10px;
+}
+.copyright-right a:first-child{
+    border-right: none;
+}
+.home-image{
+    right: inherit;
+    left: 0;
+}
+.search-box button{
+    right: inherit;
+    left: 0;
+}
+.signin-box input{
+    text-align: right;
+}
+.about-text ul li span{
+    left: inherit;
+    right: 10px;
+}
+.about-text ul li{
+    padding-left: 0;
+    padding-right: 40px;
+}
+.location .social-contact-icon{
+    margin-right: 0;
+    margin-left: 15px;
+}
+.marketing-content-box img{
+    margin-right: 0;
+    margin-left: 15px;
+}
+.marketing-tools-content ul li .tik-icon{
+    left: inherit;
+    right: 0;
+}
+.marketing-tools-content ul li{
+    padding-left: 0;
+    padding-right: 40px;
+}
+.mobile-logo i{
+    margin-right: 0;
+    margin-left: 15px;
+}
+.noti-button{
+    right: inherit;
+    left: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.client-section .slick-dots{
+    right: inherit;
+    left: 0;
+}
+.say-client img{
+    margin-right: 0;
+    margin-left: 20px;
+}

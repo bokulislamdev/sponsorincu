@@ -1,0 +1,113 @@
+@media only screen and (max-width:1200px) {
+    .menubar > ul > li > a {
+        padding: 8px 16px;
+    }
+
+    .menubar > ul > li > a {
+        padding: 8px 10px;
+    }
+    
+
+}
+
+
+@media only screen and (max-width:991px) {
+    .menubar ul li a {
+        padding: 15px 9px;
+    }
+
+    .copyright-left {
+        text-align: center;
+    }
+
+    .copyright-right {
+        text-align: center;
+        padding-top: 10px;
+    }
+    .client-section .slick-dots{
+        display: none !important;
+    }
+
+}
+
+@media only screen and (max-width:767px) {
+
+    
+
+    
+
+
+
+}
+
+@media only screen and (max-width:575px) {
+    body {
+        font-size: 14px;
+    }
+    .home-content p {
+	font-size: 25px;
+}
+    .home-content h1 {
+	font-size: 28px;
+	font-weight: 700;
+	text-transform: uppercase;
+	line-height: 35px;
+	padding: 10px 0;
+}
+    .home-content a{
+        padding: 6px;
+        font-size: 14px;
+    }
+    .event-title h4{
+        font-size: 22px;
+    }
+    .latest-filter button{
+        margin: 0;
+    }
+    .latest-filter button{
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+    .about-btn {
+	font-size: 14px;
+	padding: 8px 18px;
+}
+    .client-section .slick-dots{
+        display: none !important;
+    }
+    .notification-left h4{
+        font-size: 35px;
+    }
+    .notification-left p{
+        font-size: 14px;
+    }
+    .noti-button{
+        font-size: 16px;
+    }
+    .noti-form input::placeholder{
+        font-size: 16px;
+    }
+    .copyright-content p{
+        font-size: 14px;
+    }
+    .copyright-right a{
+        font-size: 14px;
+    }
+    .page-head-section h2{
+        font-size: 32px;
+    }
+    .marketing-box h2{
+        font-size: 30px;
+    }
+    .ads-content-box p{
+        font-size: 16px;
+    }
+    .marketing-box.org h2{
+        font-size: 16px;
+    }
+    .logo-image a img {
+        width: 130px;
+    }
+}
+
+@media only screen and (max-width:400px) {}
