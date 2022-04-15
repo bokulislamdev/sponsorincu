@@ -15,7 +15,7 @@ $locale = app()->getLocale();
                     <p>
                         <a href="{{route('homepage')}}">Home</a>
                         <span>/</span>
-                        <span>@lang('home.Discover_Events')</span>
+                        <span>@lang('home.Event_Type')</span>
                     </p>
                 </div>
             </div>
@@ -34,7 +34,7 @@ $locale = app()->getLocale();
                         {{$event_type->name_ar}}
                         @endif
                     </h6>
-                    <a href="#">View All</a>
+                    <a href="{{route('single.event.type',$event_type->slug)}}">View All</a>
                 </div>
             </div>
             <div class="row m-auto">
@@ -58,7 +58,7 @@ $locale = app()->getLocale();
                                 @endif
                                
                             </h6>
-                            <a href="#" class="stretched-link"></a>
+                            <a href="{{route('single.topic',$event_topic->slug)}}" class="stretched-link"></a>
                         </div>
                     </div>
                 </div> 

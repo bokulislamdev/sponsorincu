@@ -175,7 +175,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6 pb-4">
+
+
+
+
+                    <div class="col-12 col-lg-6 pb-4 d-none d-lg-block">
                         <div class="marketing-content-box">
                             <div class="d-flex bd-highlight">
                                 <div class="flex-shrink-1 bd-highlight">
@@ -189,6 +193,26 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 col-lg-6 pb-4 d-lg-none">
+                        <div class="marketing-content-box right">
+                            <div class="d-flex bd-highlight">
+                               
+                                <div class="w-100 bd-highlight">
+                                    <p>
+                                        @lang('home.event_marketing_li2')
+                                    </p>
+                                </div>
+                                <div class="flex-shrink-1 bd-highlight">
+                                    <img src="{{asset('web')}}/images/marketing/2.png" alt="Event Marketing Photo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
                     <div class="col-12 col-lg-6 pb-4">
                         <div class="marketing-content-box">
                             <div class="d-flex bd-highlight">
@@ -203,7 +227,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6 pb-4">
+
+
+
+
+                    <div class="col-12 col-lg-6 pb-4 d-none d-lg-block">
                         <div class="marketing-content-box">
                             <div class="d-flex bd-highlight">
                                 <div class="flex-shrink-1 bd-highlight">
@@ -217,6 +245,25 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 col-lg-6 pb-4 d-lg-none">
+                        <div class="marketing-content-box right">
+                            <div class="d-flex bd-highlight">
+                               
+                                <div class="w-100 bd-highlight">
+                                    <p>
+                                        @lang('home.event_marketing_li4')
+                                    </p>
+                                </div>
+                                <div class="flex-shrink-1 bd-highlight">
+                                    <img src="{{asset('web')}}/images/marketing/4.png" alt="Event Marketing Photo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                     <div class="col-12 col-lg-6 pb-4">
                         <div class="marketing-content-box">
                             <div class="d-flex bd-highlight">
@@ -231,7 +278,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6 pb-4">
+
+
+
+
+
+
+                    <div class="col-12 col-lg-6 pb-4 d-none d-lg-block">
                         <div class="marketing-content-box">
                             <div class="d-flex bd-highlight">
                                 <div class="flex-shrink-1 bd-highlight">
@@ -245,6 +298,26 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 col-lg-6 pb-4 d-lg-none">
+                        <div class="marketing-content-box right">
+                            <div class="d-flex bd-highlight">
+                                <div class="w-100 bd-highlight">
+                                    <p>
+                                        @lang('home.event_marketing_li6')
+                                    </p>
+                                </div>
+                                <div class="flex-shrink-1 bd-highlight">
+                                    <img src="{{asset('web')}}/images/marketing/6.png" alt="Event Marketing Photo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
                     <div class="col-12 col-lg-6 pb-4">
                         <div class="marketing-content-box">
                             <div class="d-flex bd-highlight">
@@ -259,7 +332,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6 pb-4">
+
+
+
+
+                    <div class="col-12 col-lg-6 pb-4 d-none d-lg-block">
                         <div class="marketing-content-box">
                             <div class="d-flex bd-highlight">
                                 <div class="flex-shrink-1 bd-highlight">
@@ -273,6 +350,24 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 col-lg-6 pb-4 d-lg-none">
+                        <div class="marketing-content-box right">
+                            <div class="d-flex bd-highlight">
+                                
+                                <div class="w-100 bd-highlight">
+                                    <p>
+                                        @lang('home.event_marketing_li8')
+                                    </p>
+                                </div>
+                                <div class="flex-shrink-1 bd-highlight">
+                                    <img src="{{asset('web')}}/images/marketing/8.png" alt="Event Marketing Photo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                     <div class="col-12 col-lg-6 pb-4">
                         <div class="marketing-content-box">
                             <div class="d-flex bd-highlight">

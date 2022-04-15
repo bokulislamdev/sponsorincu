@@ -25,20 +25,25 @@ $locale = app()->getLocale();
             <div class="row">
                 <div class="col-12 col-md-5 col-lg-4">
                     <div class="event-left">
-                        <form action="#">
+                        <form action="{{route('event')}}" method="get">
+                        
                             <div class="py-2">
                                 <label for="#">@lang('home.Location')</label>
-                                <input type="text">
+                                <input type="text" name="location">
                             </div>
                             <div class="py-2">
                                 <label for="#">@lang('home.Event_Type')</label>
-                                <select name="" id="">
+                                <select name="type" id="event_type_id" onchange="getEventToptic()">
                                     <option value="">select</option>
+                                    @foreach ($event_type as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                    @endforeach
+                                    
                                 </select>
                             </div>
                             <div class="py-2">
                                 <label for="#">@lang('home.Event_Topic')</label>
-                                <select name="" id="">
+                                <select name="topic" id="event_topic">
                                     <option value="">select</option>
                                 </select>
                             </div>
@@ -49,7 +54,7 @@ $locale = app()->getLocale();
                             </div>
                             <div class="py-2">
                                 <label for="#">@lang('home.Date')</label>
-                                <input type="date" placeholder="asd jas">
+                                <input type="date" name="date">
                             </div>
                             <div class="pt-3">
                                 <button type="submit">@lang('home.Search')</button>
@@ -61,7 +66,7 @@ $locale = app()->getLocale();
                 <div class="col-12 col-md-7 col-lg-8 pt-4 pt-md-0">
                     <div class="event-right">
                         <div class="row">
-                            @foreach ($events as $event)
+                            @forelse ($events as $event)
                             <div class="col-12 col-sm-6 col-lg-4 pb-4">
                                 <div class="main-event-box">
                                     <div class="event-image">
@@ -79,178 +84,14 @@ $locale = app()->getLocale();
                                         <p class="title">{{$event->name_ar}}</p>
                                         @endif
                                         
-                                        <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> Riadah, Saudi Arabia</span>
-                                        <span class="price">Starting at <b>$500</b></span>
+                                        <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> {{$event->address}}</span>
+                                        <span class="price">Starting at <b>SAR {{$event->basic_price}}</b></span>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
-                           
-                            {{-- <div class="col-12 col-sm-6 col-lg-4 pb-4">
-                                <div class="main-event-box">
-                                    <div class="event-image">
-                                        <a href="#">
-                                            <img src="{{asset('web')}}/images/event/6.png" alt="Event Photo">
-                                        </a>
-                                    </div>
-                                    <div class="event-text">
-                                        <span class="date">Thursday, 13 Apr 2022</span>
-                                        <p class="title">Lorem Ipsum is simply dummy text of the....</p>
-                                        <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> Riadah, Saudi Arabia</span>
-                                        <span class="price">Starting at <b>$500</b></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 pb-4">
-                                <div class="main-event-box">
-                                    <div class="event-image">
-                                        <a href="#">
-                                            <img src="{{asset('web')}}/images/event/7.png" alt="Event Photo">
-                                        </a>
-                                    </div>
-                                    <div class="event-text">
-                                        <span class="date">Thursday, 13 Apr 2022</span>
-                                        <p class="title">Lorem Ipsum is simply dummy text of the....</p>
-                                        <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> Riadah, Saudi Arabia</span>
-                                        <span class="price">Starting at <b>$500</b></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 pb-4">
-                                <div class="main-event-box">
-                                    <div class="event-image">
-                                        <a href="#">
-                                            <img src="{{asset('web')}}/images/event/5.png" alt="Event Photo">
-                                        </a>
-                                    </div>
-                                    <div class="event-text">
-                                        <span class="date">Thursday, 13 Apr 2022</span>
-                                        <p class="title">Lorem Ipsum is simply dummy text of the....</p>
-                                        <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> Riadah, Saudi Arabia</span>
-                                        <span class="price">Starting at <b>$500</b></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 pb-4">
-                                <div class="main-event-box">
-                                    <div class="event-image">
-                                        <a href="#">
-                                            <img src="{{asset('web')}}/images/event/6.png" alt="Event Photo">
-                                        </a>
-                                    </div>
-                                    <div class="event-text">
-                                        <span class="date">Thursday, 13 Apr 2022</span>
-                                        <p class="title">Lorem Ipsum is simply dummy text of the....</p>
-                                        <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> Riadah, Saudi Arabia</span>
-                                        <span class="price">Starting at <b>$500</b></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 pb-4">
-                                <div class="main-event-box">
-                                    <div class="event-image">
-                                        <a href="#">
-                                            <img src="{{asset('web')}}/images/event/7.png" alt="Event Photo">
-                                        </a>
-                                    </div>
-                                    <div class="event-text">
-                                        <span class="date">Thursday, 13 Apr 2022</span>
-                                        <p class="title">Lorem Ipsum is simply dummy text of the....</p>
-                                        <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> Riadah, Saudi Arabia</span>
-                                        <span class="price">Starting at <b>$500</b></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 pb-4">
-                                <div class="main-event-box">
-                                    <div class="event-image">
-                                        <a href="#">
-                                            <img src="{{asset('web')}}/images/event/5.png" alt="Event Photo">
-                                        </a>
-                                    </div>
-                                    <div class="event-text">
-                                        <span class="date">Thursday, 13 Apr 2022</span>
-                                        <p class="title">Lorem Ipsum is simply dummy text of the....</p>
-                                        <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> Riadah, Saudi Arabia</span>
-                                        <span class="price">Starting at <b>$500</b></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 pb-4">
-                                <div class="main-event-box">
-                                    <div class="event-image">
-                                        <a href="#">
-                                            <img src="{{asset('web')}}/images/event/6.png" alt="Event Photo">
-                                        </a>
-                                    </div>
-                                    <div class="event-text">
-                                        <span class="date">Thursday, 13 Apr 2022</span>
-                                        <p class="title">Lorem Ipsum is simply dummy text of the....</p>
-                                        <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> Riadah, Saudi Arabia</span>
-                                        <span class="price">Starting at <b>$500</b></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 pb-4">
-                                <div class="main-event-box">
-                                    <div class="event-image">
-                                        <a href="#">
-                                            <img src="{{asset('web')}}/images/event/7.png" alt="Event Photo">
-                                        </a>
-                                    </div>
-                                    <div class="event-text">
-                                        <span class="date">Thursday, 13 Apr 2022</span>
-                                        <p class="title">Lorem Ipsum is simply dummy text of the....</p>
-                                        <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> Riadah, Saudi Arabia</span>
-                                        <span class="price">Starting at <b>$500</b></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 pb-4">
-                                <div class="main-event-box">
-                                    <div class="event-image">
-                                        <a href="#">
-                                            <img src="{{asset('web')}}/images/event/5.png" alt="Event Photo">
-                                        </a>
-                                    </div>
-                                    <div class="event-text">
-                                        <span class="date">Thursday, 13 Apr 2022</span>
-                                        <p class="title">Lorem Ipsum is simply dummy text of the....</p>
-                                        <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> Riadah, Saudi Arabia</span>
-                                        <span class="price">Starting at <b>$500</b></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 pb-4">
-                                <div class="main-event-box">
-                                    <div class="event-image">
-                                        <a href="#">
-                                            <img src="{{asset('web')}}/images/event/6.png" alt="Event Photo">
-                                        </a>
-                                    </div>
-                                    <div class="event-text">
-                                        <span class="date">Thursday, 13 Apr 2022</span>
-                                        <p class="title">Lorem Ipsum is simply dummy text of the....</p>
-                                        <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> Riadah, Saudi Arabia</span>
-                                        <span class="price">Starting at <b>$500</b></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-lg-4 pb-4">
-                                <div class="main-event-box">
-                                    <div class="event-image">
-                                        <a href="#">
-                                            <img src="{{asset('web')}}/images/event/7.png" alt="Event Photo">
-                                        </a>
-                                    </div>
-                                    <div class="event-text">
-                                        <span class="date">Thursday, 13 Apr 2022</span>
-                                        <p class="title">Lorem Ipsum is simply dummy text of the....</p>
-                                        <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> Riadah, Saudi Arabia</span>
-                                        <span class="price">Starting at <b>$500</b></span>
-                                    </div>
-                                </div>
-                            </div> --}}
+                            @empty
+                                <h4 class="text-danger text-center py-5">Search Not Found . </h4>
+                            @endforelse
                            
                         </div>
                     </div>
@@ -265,4 +106,39 @@ $locale = app()->getLocale();
 
 
 @endsection
+
+@push('js')
+
+    <script>
+            function getEventToptic() {
+        var event_type_id = $("#event_type_id").val()
+
+        if (event_type_id) {
+            $.ajax({
+                url: `{{ route('event.topic.get') }}`,
+                data: {
+                    id: event_type_id
+                },
+                success: function(res) {
+                    console.log(res)
+                    $("#event_topic").empty()
+                    var options = '';
+                    $.each(res, function(index, row) {
+                        options += "<option value='" + row.id + "'>" + row.name + "</option>";
+                    })
+                    console.log(options)
+                    $("#event_topic").append(options);
+                },
+                error: function(e) {
+                    console.log(e);
+                    toastr.error('Something went wrong, please see the console')
+                }
+            });
+
+            return;
+        }
+    }
+
+    </script>
+@endpush()
 

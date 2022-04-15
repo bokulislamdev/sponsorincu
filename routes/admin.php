@@ -38,6 +38,7 @@ Route::prefix('admin')
             'event' => 'EventController',
             'event-type' => 'EventTypeController',
             'event-topic' => 'EventTopicController',
+            'sponsor-request' => 'SponsorRequestController',
         ]);
 
         Route::get('/create-package', 'EventController@packageCreate')->name('create.package');
@@ -52,6 +53,9 @@ Route::prefix('admin')
     Route::post('/standard/package/price/{id}', 'Account\Admin\EventController@standardPackagePrice')->name('standard.package.price.store');
     Route::post('/premium/package/price/{id}', 'Account\Admin\EventController@premiumPackagePrice')->name('premium.package.price.store');
     Route::get('admin/getsubcategory', 'Account\Admin\EventTypeController@getsubcategory')->name('get.subcategory');
+
+    Route::get('product/status','AdminController@productStatusModel')->name('change.status.model');
+    Route::post('product/status/{id}','AdminController@productStatus')->name('change.update');
 
 
     

@@ -17,6 +17,7 @@ use App\Models\City;
 use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Event;
+use App\Models\EventPackage;
 use App\Models\EventTopic;
 use App\Models\EventType;
 use App\Models\Partner;
@@ -32,14 +33,8 @@ class WebController extends Controller
 {
     public function homepage()
     {
-        // $data['available'] = Event::latest()->where('event_type_id',2)->where('is_published',1)->where('status','!=',0)->limit(8)->get();
-        // $data['upcoming'] = Event::latest()->where('event_type_id',3)->where('is_published',1)->where('status','!=',0)->limit(8)->get();
-        // $data['top_event'] = Event::latest()->where('event_type_id',4)->where('is_published',1)->where('status','!=',0)->limit(8)->get();
-        // $data['fastival'] = Event::latest()->where('event_type_id',5)->where('is_published',1)->where('status','!=',0)->limit(8)->get();
-        // $data['commercial'] = Event::latest()->where('event_type_id',6)->where('is_published',1)->where('status','!=',0)->limit(8)->get();
-        // $data['eventtypies'] = EventType::all();
         $data['event_types'] = EventType::where('status',1)->get();
-        $data['event_topoi_default'] = EventTopic::where('status',1)->limit(4)->get();
+        $data['event_topics_default'] = EventTopic::where('status',1)->limit(4)->get();
         return view('web.homepage', $data);
     }
 
@@ -48,8 +43,37 @@ class WebController extends Controller
         return view('web.about');
     }
 
-    public function event(){
-        $data['events'] = Event::latest()->where('is_published',1)->where('status','!=',0)->limit(24)->get();
+    public function event(Request $request){
+
+        $query = Event::query();
+        $data['event_type'] = EventType::where('status',1)->get();
+
+        // return $request->all();
+        if ($request->type) {
+            
+            
+            // $data['event_type'] = $request->type;
+            $query = $query->where('event_type_id', $request->type);
+        }
+        if ($request->location) {
+
+            $query = $query->where('address', 'LIKE', "%$request->location%");
+        }
+        if ($request->event) {
+
+            $query = $query->where('name', 'LIKE', "%$request->event%");
+        }
+        if ($request->topic) {
+            // $data['event_topic'] = $request->topic;
+            $query = $query->where('event_topic_id', $request->topic);
+        }
+        if ($request->date) {
+            // $data['date'] = $request->date;
+            $query =  $query->where('date', $request->date);
+        }
+        
+        $data['events'] = $query->latest()->where('is_published',1)->where('status','!=',0)->limit(24)->get();
+
         return view('web.event',$data);
     }
     
@@ -61,6 +85,9 @@ class WebController extends Controller
 
     public function eventDetails($slug){
         $data['event'] = Event::where('slug','=',$slug)->firstOrFail();
+        $event_in = Event::where('slug','=',$slug)->firstOrFail();
+        $data['package'] = EventPackage::where('event_id',$event_in->id)->get();
+      
         return view('web.event-details',$data);
     }
     
@@ -89,7 +116,6 @@ class WebController extends Controller
     
     public function contact(Request $request)
     {
-
         return view('web.contact');
     }
   
@@ -132,6 +158,22 @@ class WebController extends Controller
     public function service(){
         return view('web.service');
     }
+
+    public function singleTopic($slug){
+        $data['event_topic'] = EventTopic::where('slug',$slug)->first();
+        $event_topic_in = EventTopic::where('slug',$slug)->first();
+        $data['event_type'] = EventType::where('status',1)->get();
+        $data['events'] = Event::latest()->where('is_published',1)->where('status','!=',0)->where('event_topic_id',$event_topic_in->id)->limit(24)->get();
+        return view('web.single-topic',$data);
+    }
+    
+    public function singleEventType($slug){
+        $data['event_types'] = EventType::where('slug',$slug)->first();
+        $event_types_in = EventType::where('slug',$slug)->first();
+        $data['event_topics'] = EventTopic::where('event_type_id',$event_types_in->id)->get();
+        return view('web.single-type',$data);
+    }
+
     public function productCategory($slug)
     {
 
@@ -164,6 +206,15 @@ class WebController extends Controller
         $data['blog'] = Blog::where('status', '=', 1)->limit(7)->get();
         return view('web.blog', $data);
     }
+
+    public function eventTopicGet(Request $request){
+        if ($request->ajax()) {
+            $topics = EventTopic::where('id',$request->id)->get();
+            return $topics;
+        }
+    }
+
+
 
  
 

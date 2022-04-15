@@ -15,8 +15,13 @@ use Intervention\Image\Facades\Image;
 class EventController extends Controller
 {
      
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            $topics = EventTopic::where('id',$request->id)->get();
+            return $topics;
+        }
+
         $data['events'] = Event::where('status','!=','0')->get();
         return view('account.admin.event.index',$data);
     }

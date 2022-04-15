@@ -5,7 +5,6 @@ $locale = app()->getLocale();
 
 
 @section('content')
-
     <!--    HOME SECTION-->
     <section class="home-section" style="background-image: linear-gradient(#6429e365,#6429e365),url({{asset('web')}}/images/photos/top-banner.png);background-position: center;
     background-repeat: no-repeat;
@@ -37,59 +36,78 @@ $locale = app()->getLocale();
     </section>
     <!--   HOME SECTION  -->
 
-    <!--    EVENT SECTION-->
-    <section class="event-section py-5">
-        <div class="container">
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="all" data-bs-toggle="pill" data-bs-target="#all_tab" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">All</button>
-                </li>
-                @foreach ($event_types as $event_type)
+        <!--    EVENT SECTION-->
+        <section class="event-section py-5">
+            <div class="container">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="{{$event_type->slug}}" data-bs-toggle="pill" data-bs-target="#{{$event_type->slug}}_tab" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">{{$event_type->name}}</button>
+                        <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true">All types</button>
                     </li>
-                @endforeach
-                
-                {{-- <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
-                </li> --}}
-              </ul>
-              <div class="tab-content" id="pills-tabContent">
-                
-                <div class="tab-pane fade show active" id="all_tab" role="tabpanel" aria-labelledby="all">
-                    default
+                    @foreach ($event_types as $event_type)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="types{{ $event_type->id }}-tab" data-bs-toggle="tab" data-bs-target="#types{{ $event_type->id }}" type="button" role="tab" aria-controls="types{{ $event_type->id }}" aria-selected="false">
+                                @if ($locale == 'en')
+                                {{ $event_type->name }}
+                                @elseif( $locale == "ar")
+                                {{ $event_type->name_ar }}
+                                @endif
+                                
+                            </button>
+                        </li>
+                    @endforeach
+                </ul>
+                <div class="row pt-2">
+                    <div class="contact-title d-flex justify-content-end align-items-center">
+                        <a href="{{route('event.category')}}">View All</a>
+                    </div>
                 </div>
-
-                @php
-                    $event_topics = App\Models\EventTopic::where('event_type_id',$event_type->id)->limit(4)->get();
-                @endphp
-
-                @foreach ($event_topics as $event_tpoic)
-                    <div class="tab-pane fade" id="{{$event_tpoic->slug}}_tab" role="tabpanel" aria-labelledby="{{$event_type->slug}}">
+                <div class="tab-content mt-4" id="myTabContent">
+                    <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
                         <div class="row">
-                            @foreach ($event_tpoic as $item)
-                                <div class="col-12 col-sm-6 col-md-3 mb-4 mix available">
-                                    <div class="event-box" style="background-image: url({{asset('web')}}/images/event/1.png); ">
-                                        <h6>
-                                            Cinema, Media & Entertainmentt
-                
-                                        </h6>
-                                        <a href="#" class="stretched-link"></a>
-                                    </div>
+                            @foreach ($event_topics_default as $topics_default)
+                            <div class="col-12 col-sm-6 col-md-3 mb-4 mix available">
+                                <div class="event-box" style="background-image: url({{asset('web')}}/images/event/1.png); ">
+                                    <h6>
+                                        @if ($locale == 'en')
+                                        {{ $topics_default->name }}
+                                        @elseif( $locale == "ar")
+                                        {{ $topics_default->name_ar }}
+                                        @endif
+                                        
+                                    </h6>
+                                    <a href="{{route('single.topic',$topics_default->slug)}}" class="stretched-link"></a>
                                 </div>
+                            </div>
                             @endforeach
                         </div>
                     </div>
-                @endforeach
-                
-                
-              </div>
-        </div>
-    </section>
-    <!--    EVENT SECTION END-->
+                    @foreach ($event_types as $event_type)
+                        @php
+                            $event_topics = App\Models\EventTopic::where('event_type_id',$event_type->id)->limit(4)->get();
+                        @endphp
+                        <div class="tab-pane fade" id="types{{ $event_type->id }}" role="tabpanel" aria-labelledby="types{{ $event_type->id }}-tab">
+                            <div class="row">
+                                @foreach ($event_topics as $event_topic)
+                                <div class="col-12 col-sm-6 col-md-3 mb-4 mix available">
+                                    <div class="event-box" style="background-image: url({{asset('web')}}/images/event/1.png); ">
+                                        <h6>
+                                            @if ($locale == 'en')
+                                            {{ $event_topic->name }}
+                                        @elseif( $locale == "ar")
+                                        {{ $event_topic->name_ar }}
+                                        @endif
+                                        </h6>
+                                        <a href="{{route('single.topic',$event_topic->slug)}}" class="stretched-link"></a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        <!--    EVENT SECTION END-->
 
     <!--    ABOUT SECTION-->
     <section class="about-section py-5">

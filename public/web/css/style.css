@@ -461,8 +461,13 @@ header .mobile-icon {
     margin-bottom: 15px;
     border: 1px solid var(--sc);
 }
+.event-section button.nav-link:hover{
+    border:  1px solid var(--sc);
+}
 .event-section button.nav-link.active{
     background: var(--sc);
+    border: 1px solid var(--sc);
+    color: var(--wc);
 }
 .event-section .nav-pills{
     text-align: center;
@@ -471,6 +476,10 @@ header .mobile-icon {
 }
 .event-section .nav-pills .nav-item{
     display: inline-block;
+    border: 1px solid var(--sc);
+}
+.event-section .nav-pills .nav-item:hover{
+    border: 1px solid var(--sc) !important;
 }
 
 .event-box {
@@ -498,6 +507,17 @@ header .mobile-icon {
     padding: 0 8px;
 
 
+}
+.event-section .nav-tabs{
+    display: block;
+    width: 100%;
+    text-align: center;
+
+}
+.event-section .nav-tabs .nav-item{
+    display: inline-block;
+    font-size: 14px;
+    
 }
 
 .mixitup-control-active {
@@ -1110,9 +1130,11 @@ span {
 
 .marketing-content-box img {
     width: 178px;
-    margin-right: 15px;
+    padding: 0 10px;
 }
-
+.marketing-content-box.right{
+    /* text-align: right; */
+}
 /*marketing tool*/
 
 .marketing-tool-section {
@@ -1183,6 +1205,7 @@ span {
     margin: 0;
     font-size: 20px;
     line-height: 30px;
+    padding: 0 12px;
 }
 
 .ads-content-box span {

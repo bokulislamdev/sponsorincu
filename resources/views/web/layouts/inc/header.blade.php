@@ -102,8 +102,8 @@
                                 </div>
                                 <div class="search-bar px-4">
                                     <div class="search-box">
-                                        <form action="#">
-                                            <input type="text" placeholder="@lang('home.Find_Events')">
+                                        <form action="{{route('event')}}" method="get">
+                                            <input type="text" placeholder="@lang('home.Find_Events')" name="event">
                                             <button type="submit">
                                                 <img src="{{asset('web')}}/images/icons/search.png" alt="">
                                             </button>

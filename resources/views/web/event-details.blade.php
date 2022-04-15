@@ -1,3 +1,7 @@
+@php
+$locale = app()->getLocale();
+@endphp
+
 @extends('web.layouts.app', ['title' => 'Events'])
 
 
@@ -36,12 +40,23 @@
                                         </div>
                                         <div class="pt-3 border-bottom">
                                             <span class="date">{{ Carbon\Carbon::parse($event->date)->format('l') }}, {{ Carbon\Carbon::parse($event->date)->format('d M Y') }}</span>
-                                            <p class="title">{{$event->name}}</p>
+                                            <p class="title">
+                                                @if ($locale == 'en')
+                                                {{$event->name}}
+                                                @elseif( $locale == "ar")
+                                                {{$event->name_ar}}
+                                                @endif
+                                            </p>
                                             <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> {{$event->address}}</span>
     
                                         </div>
                                         <div class="py-2">
-                                            {!! $event->description !!}
+                                            @if ($locale == 'en')
+                                                {!! $event->description !!}
+                                                @elseif( $locale == "ar")
+                                                {!! $event->description_ar !!}
+                                            @endif
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -54,24 +69,17 @@
                                     <div class="sponser-package">
                                         <div class="package-head">
                                             <p>Basic Packag</p>
-                                            <h4>$500</h4>
+                                            <h4>SAR {{$event->basic_price}}</h4>
                                         </div>
                                         <ul>
-                                            <li>
-                                                <i class="i-check" data-feather="check"></i> Service Number 01
+                                            @foreach ($package as $item)
+                                            <li class="{{$item->basic == 0 ? 'danger' : ''}}">
+                                                <i class="i-check" data-feather="check"></i>
+                       
+                                                {{$item->service_name}}
                                             </li>
-                                            <li>
-                                                <i class="i-check" data-feather="check"></i> Service Number 02
-                                            </li>
-                                            <li class="danger">
-                                                <i class="i-check" data-feather="check"></i> Service Number 03
-                                            </li>
-                                            <li class="danger">
-                                                <i class="i-check" data-feather="check"></i> Service Number 04
-                                            </li>
-                                            <li class="danger">
-                                                <i class="i-check" data-feather="check"></i> Service Number 05
-                                            </li>
+                                            @endforeach
+                                          
                                         </ul>
                                         <a href="#">Contact</a>
                                     </div>
@@ -80,24 +88,16 @@
                                     <div class="sponser-package">
                                         <div class="package-head">
                                             <p>Standart Package</p>
-                                            <h4>$800</h4>
+                                            <h4>SAR {{$event->standard_price}}</h4>
                                         </div>
                                         <ul>
-                                            <li>
-                                                <i class="i-check" data-feather="check"></i> Service Number 01
+                                            @foreach ($package as $item)
+                                            <li class="{{$item->standard == 0 ? 'danger' : ''}}">
+                                                <i class="i-check" data-feather="check"></i> 
+                                                {{$item->service_name}}
                                             </li>
-                                            <li>
-                                                <i class="i-check" data-feather="check"></i> Service Number 02
-                                            </li>
-                                            <li>
-                                                <i class="i-check" data-feather="check"></i> Service Number 03
-                                            </li>
-                                            <li>
-                                                <i class="i-check" data-feather="check"></i> Service Number 04
-                                            </li>
-                                            <li class="danger">
-                                                <i class="i-check" data-feather="check"></i> Service Number 05
-                                            </li>
+                                            @endforeach
+                                           
                                         </ul>
                                         <a href="#">Contact</a>
                                     </div>
@@ -106,26 +106,18 @@
                                     <div class="sponser-package">
                                         <div class="package-head">
                                             <p>Premium Package</p>
-                                            <h4>$1200</h4>
+                                            <h4>SAR {{$event->premium_price}}</h4>
                                         </div>
                                         <ul>
-                                            <li>
-                                                <i class="i-check" data-feather="check"></i> Service Number 01
+                                            @foreach ($package as $item)
+                                            <li class="{{$item->premium == 0 ? 'danger' : ''}}">
+                                                <i class="i-check" data-feather="check"></i> 
+                                                {{$item->service_name}}
                                             </li>
-                                            <li>
-                                                <i class="i-check" data-feather="check"></i> Service Number 02
-                                            </li>
-                                            <li>
-                                                <i class="i-check" data-feather="check"></i> Service Number 03
-                                            </li>
-                                            <li>
-                                                <i class="i-check" data-feather="check"></i> Service Number 04
-                                            </li>
-                                            <li>
-                                                <i class="i-check" data-feather="check"></i> Service Number 05
-                                            </li>
+                                            @endforeach
+                                           
                                         </ul>
-                                        <a href="#">Contact</a>
+                                        <a href="{{route('contact')}}">Contact</a>
                                     </div>
                                 </div>
                             </div>

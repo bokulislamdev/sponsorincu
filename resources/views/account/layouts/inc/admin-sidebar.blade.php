@@ -64,6 +64,18 @@
           </li>
         </ul>
       </li>
+      <li>
+        <a href="javascript:;" class="has-arrow">
+          <div class="parent-icon"><i class="lni lni-user"></i>
+          </div>
+          <div class="menu-title">Sponsor Request</div>
+        </a>
+        <ul>
+          <li> <a href="{{route('admin.sponsor-request.index')}}"><i class="bi bi-circle"></i>Sponsor Request List</a>
+          </li>
+         
+        </ul>
+      </li>
       {{-- <li>
         <a href="javascript:;" class="has-arrow">
           <div class="parent-icon"><i class="lni lni-user"></i>

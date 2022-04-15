@@ -19,6 +19,7 @@ class CreateEventTopicsTable extends Migration
             $table->string('name')->nullable();
             $table->string('name_ar')->nullable();
             $table->integer('status')->default(1);
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

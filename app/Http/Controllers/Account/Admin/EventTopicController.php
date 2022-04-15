@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Account\Admin;
 
 use App\Models\EventTopic;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Idemonbd\Notify\Facades\Notify;
 use App\Http\Controllers\Controller;
@@ -47,6 +48,7 @@ class EventTopicController extends Controller
 
         $data = new EventTopic();
         $input = $request->except('_token','_method');
+        $input['slug'] = Str::slug($request->name,'-');
 
         $data->fill($input)->save();
 
@@ -96,7 +98,7 @@ class EventTopicController extends Controller
 
         $data = EventTopic::find($id);
         $input = $request->except('_token','_method');
-
+        $input['slug'] = Str::slug($request->name,'-');
         $data->fill($input)->save();
 
         Notify::success('Event Topic Update Successfully!');

@@ -42,52 +42,35 @@
 
 
 
-                {{-- <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="field-2" class="control-label">Select Category</label>
-                        <select class="form-control" name="event_type_id" id="category_id">
-                            <option value="">Select Category one</option>
-                            @foreach ($event_types as $item)
-                            <option value="{{$item->id}}" {{$item->id == old('event_type_id') ? 'selected' : ''}}>{{$item->name}}</option>
-                            @endforeach
-                        </select>
-                        @error('category_id')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="field-2" class="control-label">Select Sub-Category</label>
-                        <select class="form-control" name="event_topic_id" id="subcategory_id">
-                            <option value="">Select Category one</option>
-                            
-                        </select>
-                    </div>
-                </div> --}}
+
+
+
+
 
 
                 <div class="col-12 col-md-6 py-2">
                     <label for="" class="form-label">Event Type</label>
-                    <select name="event_type_id" id="" class="form-control">
+                    <select name="event_type_id" id="event_type_id" class="form-control" onchange="getEventToptic()">
                         <option value="">--Select--</option>
                         @foreach ($event_types as $item)
-                        <option value="{{$item->id}}" {{$item->id == old('event_type_id') ? 'selected' : ''}}>{{$item->name}}</option>
+                        <option value="{{ $item->id }}" {{ $item->id == request('event_type_id') ? 'selected' : '' }}>{{$item->name}}</option>
                         @endforeach
                     </select>
                     <span class="text-danger">{{$errors->first('event_type_id')}}</span>
                 </div>
+
+
+
                 <div class="col-12 col-md-6 py-2">
                     <label for="" class="form-label">Event Topice</label>
-                    <select name="event_topic_id" id="" class="form-control">
+                    <select name="event_topic_id" id="event_topic" class="form-control">
                         <option value="">--Select--</option>
-                        @foreach ($event_topices as $item)
-                        <option value="{{$item->id}}" {{$item->id == old('event_topic_id') ? 'selected' : ''}}>{{$item->name}}</option>
-                        @endforeach
                     </select>
                     <span class="text-danger">{{$errors->first('event_topic_id')}}</span>
                 </div>
+
+                
                 <div class="col-12 col-md-6 py-2">
                     <label for="" class="form-label">Event Date</label>
                     <input type="date" name="date" class="form-control" value="{{old('date')}}"/>
@@ -146,27 +129,35 @@
 
 <script>
 
+    
+    function getEventToptic() {
+        var event_type_id = $("#event_type_id").val()
 
-    // $(document).ready(function(){
-            
-    //         $('#category_id').on('change', function(){
+        if (event_type_id) {
+            $.ajax({
+                url: `{{ route('admin.event.index') }}`,
+                data: {
+                    id: event_type_id
+                },
+                success: function(res) {
+                    console.log(res)
+                    $("#event_topic").empty()
+                    var options = '';
+                    $.each(res, function(index, row) {
+                        options += "<option value='" + row.id + "'>" + row.name + "</option>";
+                    })
+                    console.log(options)
+                    $("#event_topic").append(options);
+                },
+                error: function(e) {
+                    console.log(e);
+                    toastr.error('Something went wrong, please see the console')
+                }
+            });
 
-    //         var category_id =  $(this).val();
-
-            
-    //         var url = $('#getSubcategory').data("url");
-
-    //         $.ajax({
-    //             url: url,
-    //             data: {category_id:category_id},
-    //             type: "GET",
-    //             success: function(response){
-    //                 $('#subcategory_id').html(response);
-    //             },  
-    //         });
-    //         });
-
-    //     });
+            return;
+        }
+    }
 
 
 

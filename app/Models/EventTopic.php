@@ -11,7 +11,7 @@ class EventTopic extends Model
     protected $fillable = [
         'name',
         'name_ar',
-        'status',
+        'slug',
         'status',
     ];
 }

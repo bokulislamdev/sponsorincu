@@ -27,14 +27,15 @@ Route::namespace('Web')->group(function () {
     Route::get('/about', 'WebController@about')->name('about');
     Route::get('/contact', 'WebController@contact')->name('contact');
     Route::post('/contact/store', 'WebController@contactStore')->name('contact.store');
-    Route::get('/blog-details/{slug}', 'WebController@blogDetails')->name('blog.details');
-    Route::get('/blog', 'WebController@blog')->name('blog');
     Route::post('/subscribe', 'WebController@subscribe')->name('subscribe');
     Route::get('/events', 'WebController@event')->name('event');
     Route::get('/events/category', 'WebController@eventcategory')->name('event.category');
     Route::get('/events/details/{slug}', 'WebController@eventDetails')->name('event.details');
     Route::post('/events/request', 'WebController@eventRequest')->name('event.request.store');
     Route::get('/service', 'WebController@service')->name('service');
+    Route::get('/single-event-topic/{slug}', 'WebController@singleTopic')->name('single.topic');
+    Route::get('/single-event-type/{slug}', 'WebController@singleEventType')->name('single.event.type');
+    Route::get('/get/topic', 'WebController@eventTopicGet')->name('event.topic.get');
     
 
 });
