@@ -9,6 +9,7 @@ class EventTopic extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'event_type_id',
         'name',
         'name_ar',
         'slug',

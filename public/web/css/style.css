@@ -53,13 +53,13 @@ header {
 .menubar > ul > li > a {
     text-transform: capitalize;
     font-weight: 500;
-    padding: 14px 9px;
+    padding: 14px 5px;
     -webkit-transition: .3s;
     -webkit-transition: .2s;
     -o-transition: .2s;
     transition: .2s;
     color: var(--wc);
-    font-size: 14px;
+    font-size: 13px;
 
 }
 
@@ -125,7 +125,7 @@ header {
     -o-transition: .3s;
     transition: .3s;
     color: var(--pc);
-    font-size: 16px;
+    font-size: 13px;
     text-transform: capitalize;
 }
 
@@ -145,7 +145,7 @@ header {
 }
 
 .search-box {
-    width: 213px;
+    width: 190px;
     position: relative;
 }
 
@@ -629,6 +629,7 @@ header .mobile-icon {
 
 .service-text p {
     margin: 0;
+    text-align: left;
 }
 
 .service-box:hover {
@@ -728,9 +729,12 @@ header .mobile-icon {
 .brand-section-main {
     background: #EEEEEE;
 }
-
+.brand-box a{
+    display: block;
+    width:100%;
+}
 .brand-box img {
-    width: 50%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -844,7 +848,7 @@ footer {
 }
 
 .footer-head .logo img {
-    width: 120px;
+    width: 170px;
 }
 
 .subscribe-form {
@@ -1784,3 +1788,163 @@ webrouk-custom-range {
 }
 
 /*CONTACT PAGE END*/
+
+/*BECOME SPONSOR PAGE*/
+/*become sponsor*/
+.become-sponsor-section {
+    background: #E7EEFE;
+}
+
+.become-sponsor-head {
+    max-width: 774px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.become-sponsor-head h4 {
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 42px;
+    color: var(--pc2);
+}
+
+.become-sponsor-head h6 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--pc2);
+}
+
+.become-sponsor-head p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    color: var(--pc);
+    padding-top: 15px;
+}
+
+.become-sponsor-box {
+    height: 268px;
+    position: relative;
+}
+
+.become-sponsor-box h4 {
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 42px;
+    color: #FFD600;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.become-sponsor-box h6 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--wc);
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    margin: 0;
+}
+
+/*sponsor-contact-section*/
+.sponsor-contact-section {
+    background: var(--sc);
+}
+
+.sponsor-contact h4 {
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 42px;
+    color: var(--wc);
+}
+
+.sponsor-contact h6 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--wc);
+}
+
+.sponsor-contact a {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--pc2);
+    text-transform: uppercase;
+    background: #FFD600;
+    padding: 10px 25px;
+
+
+}
+
+/*become sponsor request*/
+.become-sponsor-request {
+    background: #E7EEFE;
+}
+
+.become-sponsor-request-form h3 {
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 42px;
+    color: var(--sc);
+}
+
+.become-sponsor-request-form h6 {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--pc);
+}
+
+.become-sponsor-request-form input {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #A7A7A7;
+    padding: 12px;
+    display: block;
+    width: 100%;
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: none;
+}
+
+.become-sponsor-request-form {
+    border: 1px solid #CCCCCC;
+    border-radius: 10px;
+    padding: 40px;
+}
+.become-sponsor-request-form button{
+    color: var(--wc);
+    background: var(--sc);
+    font-weight: 500;
+    font-size: 16px;
+    padding: 8px 30px;
+    border-radius: 5px;
+}
+.become-sponsor-request-info h2{
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 50px;
+    color: var(--pc2);
+}
+.become-sponsor-request-info ul li{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+}
+.become-sponsor-request-info a{
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--wc);
+    background: var(--sc);
+    padding: 8px 30px;
+}
+.become-sponsor-request-info{
+    border-top: 1px solid #cccccc;
+}
+/*BECOME SPONSOR PAGE END*/

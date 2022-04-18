@@ -44,11 +44,11 @@
                 </tr>
                 <tr>
                 <th scope="row">Logo</th>
-                <td><img src="{{asset($websetting->logo)}}" alt=""></td>
+                <td><img src="{{asset($websetting->logo)}}" alt="" width="100px"></td>
                 </tr>
                 <tr>
                 <th scope="row">Footer Logo</th>
-                <td><img src="{{asset($websetting->footer_logo)}}" alt=""></td>
+                <td><img src="{{asset($websetting->footer_logo)}}" alt="" width="100px"></td>
                 </tr>
                 <tr>
                     <th scope="row">Favicon Icon </th>

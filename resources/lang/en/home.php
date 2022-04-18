@@ -149,7 +149,23 @@ return [
     'Register_with_us' => 'Register with us in Sponsors Incubator',
     'As_sponsor' => 'As sponsor',
     'As_organizer' => 'As organizer',
-
+    'Our_partners' => 'Our partners',
+    
+    'Aspect_Attendance' => 'Aspect Attendance',
+    'Female' => 'Female',
+    'Male' => 'Male',
+    'Frist_Name' => 'Frist Name',
+    'Last_Name' => 'Last Name',
+    'Company' => 'Company',
+    'Choose_Package' => 'Choose Package',
+    'Premium_Package' => 'Premium Package',
+    'Standard_Packa' => 'Standard Packa',
+    'Basic_Package' => 'Basic Package',
+    'Contact' => 'Contact',
+    'Hereby_I_agree' => 'Hereby I agree with all terms and condition of Sponsors Incubator ltd.',
+    'select' => 'select',
+    'Events_Details' => 'Events Details',
+    'message' => 'Message', 
 
 
 

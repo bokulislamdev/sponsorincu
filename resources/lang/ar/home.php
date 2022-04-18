@@ -149,6 +149,21 @@ return [
     'Register_with_us' => 'سجل معنا بحاضنة الرعاة',
     'As_sponsor' => 'سجل كراعي فعاليات',
     'As_organizer' => 'سجل كمنظم فعالية',
+    'Our_partners' => 'شركاؤنا',
     
-    
+    'Aspect_Attendance' => 'الحضور المتوقع',
+    'Female' => 'أنثى',
+    'Male' => 'ذكر',
+    'Frist_Name' => 'الاسم الأول',
+    'Last_Name' => 'الاسم الأخير',
+    'Company' => 'اسم الشركة',
+    'Choose_Package' => 'اختر الباقة',
+    'Premium_Package' => 'الباقة المميزة',
+    'Standard_Packa' => 'الباقة العادية',
+    'Basic_Package' => 'الباقة الأساسية',
+    'Contact' => 'تواصل معنا',
+    'Hereby_I_agree' => 'أوافق على الشروط والاحكام بحاضنة الرعاة',
+    'select' => 'اختر',
+    'Events_Details' => 'تفاصيل الفعالية',
+     'message' => 'رسالة', 
 ];

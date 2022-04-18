@@ -108,107 +108,204 @@ $locale = app()->getLocale();
             </div>
         </section>
         <!--    EVENT SECTION END-->
-
-    <!--    ABOUT SECTION-->
-    <section class="about-section py-5">
+        
+         <!--    EVENT SECTION-->
+    <section class="event-page-section py-5">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-12 col-md-6">
-                    <div class="about-image">
-                        <img src="{{asset('web')}}/images/photos/about.png" alt="Image">
+             <div class="row mb-4">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h4>@lang('home.Discover_Events')</h4>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 mt-4 mt-md-0">
-                    <div class="about-text">
-                        <h4>@lang('home.who_are_we')</h4>
-                        <p>
-                            @lang('home.about_p1')
-                        </p>
-                        <p>
-                            @lang('home.about_p2')
-                        </p>
-                        <p>
-                            @lang('home.about_p3')
-                        </p>
-                        <p>
-                            @lang('home.about_p4')
-                        </p>
-                        <div>
-                            <a href="{{route('about')}}" class="about-btn">@lang('home.Read_More')</a>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-5 col-lg-4">
+                    <div class="event-left">
+                        <form action="{{route('event')}}" method="get">
+                        
+                            <div class="py-2">
+                                <label for="#">@lang('home.Location')</label>
+                                <input type="text" name="location">
+                            </div>
+                            <div class="py-2">
+                                <label for="#">@lang('home.Event_Type')</label>
+                                <select name="type" id="event_type_id" onchange="getEventToptic()">
+                                    <option value="">select</option>
+                                    @foreach ($event_types as $item)
+                                    <option value="{{$item->id}}">
+                                         @if ($locale == 'en')
+                                        {{$item->name}}
+                                        @else
+                                        {{$item->name_ar}}
+                                        @endif
+                                        
+                                    </option>
+                                    @endforeach
+                                    
+                                </select>
+                            </div>
+                            <div class="py-2">
+                                <label for="#">@lang('home.Event_Topic')</label>
+                                <select name="topic" id="event_topic">
+                                    <option value="">select</option>
+                                </select>
+                            </div>
+                            <div class="py-2">
+                                <webrouk-custom-range start="0" end="1000" from="300" to="700" prefix-char="$">
+                                    <input type="hidden">
+                                </webrouk-custom-range>
+                            </div>
+                            <div class="py-2">
+                                <label for="#">@lang('home.Date')</label>
+                                <input type="date" name="date">
+                            </div>
+                            <div class="pt-3">
+                                <button type="submit">@lang('home.Search')</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="col-12 col-md-7 col-lg-8 pt-4 pt-md-0">
+                    <div class="event-right">
+                        <div class="row">
+                            @forelse ($events as $event)
+                            <div class="col-12 col-sm-6 col-lg-4 pb-4">
+                                <div class="main-event-box">
+                                    <div class="event-image">
+                                        <a href="{{route('event.details',$event->slug)}}">
+                                            <img src="{{asset($event->image)}}" alt="Event Photo">
+                                        </a>
+                                    </div>
+                                    <div class="event-text">
+                                        <span class="date">{{ Carbon\Carbon::parse($event->date)->format('l') }}, {{ Carbon\Carbon::parse($event->date)->format('d M Y') }}</span>
+                                        {{-- <p class="title">{{$event->name}}</p> --}}
+                                        @if ($locale == 'en')
+                                        <p class="title">{{substr($event->name, 0, 38) . '...';}}</p>
+
+                                        @elseif( $locale == "ar")
+                                        <p class="title">{{$event->name_ar}}</p>
+                                        @endif
+                                        
+                                        <span class="date"> <i class="event-address-icon" data-feather="map-pin"></i> {{$event->address}}</span>
+                                        <span class="price">Starting at <b>SAR {{$event->basic_price}}</b></span>
+                                    </div>
+                                </div>
+                            </div>
+                            @empty
+                                <h4 class="text-danger text-center py-5">Search Not Found . </h4>
+                            @endforelse
+                           
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <!--    EVENT SECTION END-->
+
+
+    <!--    ABOUT SECTION-->
+    <!--<section class="about-section py-5">-->
+    <!--    <div class="container">-->
+    <!--        <div class="row align-items-center">-->
+    <!--            <div class="col-12 col-md-6">-->
+    <!--                <div class="about-image">-->
+    <!--                    <img src="{{asset('web')}}/images/photos/about.png" alt="Image">-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <div class="col-12 col-md-6 mt-4 mt-md-0">-->
+    <!--                <div class="about-text">-->
+    <!--                    <h4>@lang('home.who_are_we')</h4>-->
+    <!--                    <p>-->
+    <!--                        @lang('home.about_p1')-->
+    <!--                    </p>-->
+    <!--                    <p>-->
+    <!--                        @lang('home.about_p2')-->
+    <!--                    </p>-->
+    <!--                    <p>-->
+    <!--                        @lang('home.about_p3')-->
+    <!--                    </p>-->
+    <!--                    <p>-->
+    <!--                        @lang('home.about_p4')-->
+    <!--                    </p>-->
+    <!--                    <div>-->
+    <!--                        <a href="{{route('about')}}" class="about-btn">@lang('home.Read_More')</a>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</section>-->
     <!--    ABOUT SECTION END-->
 
     <!--    SERVICE SECTION-->
-    <section class="service-section py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title text-center">
-                        <h4>@lang('home.Our_Services')</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-4">
-                    <div class="service-box">
-                        <a href="{{route('service')}}">
-                            <img src="{{asset('web')}}/images/service/1.png" alt="">
-                        </a>
-                        <div class="service-text">
-                            <h4>@lang('home.service_li6')</h4>
-                            <p>
-                                @lang('home.Event_marketing_is')
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-4">
-                    <div class="service-box">
-                        <a href="{{route('service')}}">
-                            <img src="{{asset('web')}}/images/service/2.png" alt="">
-                        </a>
-                        <div class="service-text">
-                            <h4>@lang('home.Ads')</h4>
-                            <p>
-                                @lang('home.Ads_li1')
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-4">
-                    <div class="service-box">
-                        <a href="{{route('service')}}">
-                            <img src="{{asset('web')}}/images/service/3.png" alt="">
-                        </a>
-                        <div class="service-text">
-                            <h4>@lang('home.Sponsoring_non_profit')</h4>
-                            <p>
-                                @lang('home.Sponsoring_non_profit_li1')
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-4">
-                    <div class="service-box">
-                        <a href="{{route('service')}}">
-                            <img src="{{asset('web')}}/images/service/4.png" alt="">
-                        </a>
-                        <div class="service-text">
-                            <h4>@lang('home.sponsoring_influencers')</h4>
-                            {{-- <p>
-                                @lang('home.event_marketing_p')
-                            </p> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!--<section class="service-section py-5">-->
+    <!--    <div class="container">-->
+    <!--        <div class="row">-->
+    <!--            <div class="col-12">-->
+    <!--                <div class="section-title text-center">-->
+    <!--                    <h4>@lang('home.Our_Services')</h4>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="row mt-5">-->
+    <!--            <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-4">-->
+    <!--                <div class="service-box">-->
+    <!--                    <a href="{{route('service')}}">-->
+    <!--                        <img src="{{asset('web')}}/images/service/1.png" alt="">-->
+    <!--                    </a>-->
+    <!--                    <div class="service-text">-->
+    <!--                        <h4>@lang('home.service_li6')</h4>-->
+    <!--                        <p>-->
+    <!--                            @lang('home.Event_marketing_is')-->
+    <!--                        </p>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-4">-->
+    <!--                <div class="service-box">-->
+    <!--                    <a href="{{route('service')}}">-->
+    <!--                        <img src="{{asset('web')}}/images/service/2.png" alt="">-->
+    <!--                    </a>-->
+    <!--                    <div class="service-text">-->
+    <!--                        <h4>@lang('home.Ads')</h4>-->
+    <!--                        <p>-->
+    <!--                            @lang('home.Ads_li1')-->
+    <!--                        </p>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-4">-->
+    <!--                <div class="service-box">-->
+    <!--                    <a href="{{route('service')}}">-->
+    <!--                        <img src="{{asset('web')}}/images/service/3.png" alt="">-->
+    <!--                    </a>-->
+    <!--                    <div class="service-text">-->
+    <!--                        <h4>@lang('home.Sponsoring_non_profit')</h4>-->
+    <!--                        <p>-->
+    <!--                            @lang('home.Sponsoring_non_profit_li1')-->
+    <!--                        </p>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--            <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-4">-->
+    <!--                <div class="service-box">-->
+    <!--                    <a href="{{route('service')}}">-->
+    <!--                        <img src="{{asset('web')}}/images/service/4.png" alt="">-->
+    <!--                    </a>-->
+    <!--                    <div class="service-text">-->
+    <!--                        <h4>@lang('home.sponsoring_influencers')</h4>-->
+    <!--                        {{-- <p>-->
+    <!--                            @lang('home.event_marketing_p')-->
+    <!--                        </p> --}}-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</section>-->
     <!--    SERVICE SECTION END-->
 
     <!--    COUNT SECTION-->
@@ -326,6 +423,11 @@ $locale = app()->getLocale();
             </div>
     </section> --}}
     <!--    CLIENT SECTION END-->
+    
+    
+    
+    
+    
 
     <!--    BRAND SECTION-->
     <div class="section-brand-section py-5">
@@ -333,47 +435,54 @@ $locale = app()->getLocale();
             <div class="row">
                 <div class="col-12">
                     <div class="section-title text-center">
-                        <h4>@lang('home.Our_sponsors')</h4>
+                        <h4>@lang('home.Our_partners')</h4>
                     </div>
                 </div>
             </div>
-            <div class="picture_slider mt-5">
+            <div class="picture_slider mt-5 d-flex align-items-center">
                 <div class="brand-box">
-                    <img src="{{asset('web')}}/images/brands/1.png" alt="Image">
+                    <a href="#">
+                         <img src="{{asset('web')}}/images/brands/event.png" alt="Image">
+                    </a>
+                   
                 </div>
                 <div class="brand-box">
-                    <img src="{{asset('web')}}/images/brands/2.png" alt="Image">
+                    <a href="#">
+                         <img src="{{asset('web')}}/images/brands/technical.png" alt="Image">
+                    </a>
+                    
                 </div>
                 <div class="brand-box">
-                    <img src="{{asset('web')}}/images/brands/3.png" alt="Image">
+                    <a href="https://jobincu.com/en">
+                         <img src="{{asset('web')}}/images/brands/job.png" alt="Image">
+                    </a>
+                    
                 </div>
                 <div class="brand-box">
-                    <img src="{{asset('web')}}/images/brands/4.png" alt="Image">
+                    <a href="#">
+                         <img src="{{asset('web')}}/images/brands/marketing.png" alt="Image">
+                    </a>
+                    
+                </div>
+                 <div class="brand-box">
+                     <a href="#">
+                        <img src="{{asset('web')}}/images/brands/Design Incubator.png" alt="Image">
+                    </a>
+                    
                 </div>
                 <div class="brand-box">
-                    <img src="{{asset('web')}}/images/brands/5.png" alt="Image">
+                    <a href="https://exportincu.com/en">
+                          <img src="{{asset('web')}}/images/brands/export.png" alt="Image">
+                    </a>
+                   
                 </div>
-                <div class="brand-box">
-                    <img src="{{asset('web')}}/images/brands/6.png" alt="Image">
+                  <div class="brand-box">
+                      <a href="#">
+                         <img src="{{asset('web')}}/images/brands/Relathionship-incubator.png" alt="Image">
+                    </a>
+                    
                 </div>
-                <div class="brand-box">
-                    <img src="{{asset('web')}}/images/brands/1.png" alt="Image">
-                </div>
-                <div class="brand-box">
-                    <img src="{{asset('web')}}/images/brands/2.png" alt="Image">
-                </div>
-                <div class="brand-box">
-                    <img src="{{asset('web')}}/images/brands/3.png" alt="Image">
-                </div>
-                <div class="brand-box">
-                    <img src="{{asset('web')}}/images/brands/4.png" alt="Image">
-                </div>
-                <div class="brand-box">
-                    <img src="{{asset('web')}}/images/brands/5.png" alt="Image">
-                </div>
-                <div class="brand-box">
-                    <img src="{{asset('web')}}/images/brands/6.png" alt="Image">
-                </div>
+                
             </div>
         </div>
     </div>
@@ -463,4 +572,76 @@ $locale = app()->getLocale();
         });
     </script>
 @endpush
+@push('js')
+@if ($locale == 'en')
 
+
+    <script>
+            function getEventToptic() {
+                var event_type_id = $("#event_type_id").val()
+        
+                if (event_type_id) {
+                    $.ajax({
+                        url: `{{ route('event.topic.get') }}`,
+                        data: {
+                            id: event_type_id
+                        },
+                        success: function(res) {
+                            console.log(res)
+                            $("#event_topic").empty()
+                            var options = '';
+                            $.each(res, function(index, row) {
+                                options += "<option value='" + row.id + "'>" + row.name + "</option>";
+                            })
+                            console.log(options)
+                            $("#event_topic").append(options);
+                        },
+                        error: function(e) {
+                            console.log(e);
+                            toastr.error('Something went wrong, please see the console')
+                        }
+                    });
+        
+                    return;
+                }
+            }
+
+    </script>
+
+@elseif ($locale == 'ar')
+
+ <script>
+            function getEventToptic() {
+                var event_type_id = $("#event_type_id").val()
+        
+                if (event_type_id) {
+                    $.ajax({
+                        url: `{{ route('event.topic.get') }}`,
+                        data: {
+                            id: event_type_id
+                        },
+                        success: function(res) {
+                            console.log(res)
+                            $("#event_topic").empty()
+                            var options = '';
+                            $.each(res, function(index, row) {
+                                options += "<option value='" + row.id + "'>" + row.name_ar + "</option>";
+                            })
+                            console.log(options)
+                            $("#event_topic").append(options);
+                        },
+                        error: function(e) {
+                            console.log(e);
+                            toastr.error('Something went wrong, please see the console')
+                        }
+                    });
+        
+                    return;
+                }
+            }
+
+    </script>
+
+@endif
+
+@endpush

@@ -28,6 +28,7 @@ use App\Models\Subscribe;
 use Illuminate\Support\Facades\Auth;
 use NunoMaduro\Collision\Adapters\Phpunit\State;
 use PhpParser\Node\Expr\FuncCall;
+use Mail;
 
 class WebController extends Controller
 {
@@ -35,6 +36,8 @@ class WebController extends Controller
     {
         $data['event_types'] = EventType::where('status',1)->get();
         $data['event_topics_default'] = EventTopic::where('status',1)->limit(4)->get();
+        $data['events'] = Event::latest()->where('is_published',1)->where('status','!=',0)->limit(12)->get();
+        // $data['event_type'] = EventType::where('status',1)->get();
         return view('web.homepage', $data);
     }
 
@@ -124,17 +127,33 @@ class WebController extends Controller
     public function contactStore(Request $request)
     {
         $request->validate([
-           
-            'name' => 'required',
-            'email' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'phone' => 'required',
-            'country' => 'required',
+            'email' => 'required',
          
 
         ]);
         $data = new Contact();
         $input = $request->except('_token');
         $data->fill($input)->save();
+        
+        
+        
+        /*
+        $data = array('name'=>" ");
+       
+        Mail::send(['text'=>'mail.contact'], $data, function($message) {
+             $message->to('info@sponsorsincu.com', '')->subject
+                ('Website Notification');
+             $message->from('noreply@sponsorsincu.com','Sponsors Incubator');
+        });
+*/
+        
+        
+        
+        
+    
         Notify::success('Contact Request Successfully!');
         return redirect()->back();
     }
@@ -199,7 +218,6 @@ class WebController extends Controller
 
     public function blog()
     {
-        $data['categories'] = ProductCategory::where('status', '=', 1)->get();
         $data['recent_blog'] = Blog::where('status', '=', 1)->limit(5)->get();
         $data['sale_blog'] = Blog::where('status', '=', 1)->where('sell_post', '=', 1)->limit(5)->get();
         $data['offer_blog'] = Blog::where('status', '=', 1)->where('offer_post', '=', 1)->limit(5)->get();
@@ -209,10 +227,15 @@ class WebController extends Controller
 
     public function eventTopicGet(Request $request){
         if ($request->ajax()) {
-            $topics = EventTopic::where('id',$request->id)->get();
+            $topics = EventTopic::where('event_type_id',$request->id)->get();
             return $topics;
         }
     }
+
+    public function becomeSponsor(){
+        return view('web.become-sponsor');
+    }
+
 
 
 

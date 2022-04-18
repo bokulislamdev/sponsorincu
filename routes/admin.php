@@ -23,6 +23,7 @@ Route::prefix('admin')
         Route::get('vendor/all', 'UserController@vendorAll')->name('vendor.all');
 
         Route::get('contract', 'AdminController@index')->name('contract.index');
+        Route::get('contract/{id}', 'AdminController@contactShow')->name('contract.show');
         Route::get('delete/{id}', 'AdminController@destroy')->name('contract.destroy');
 
 

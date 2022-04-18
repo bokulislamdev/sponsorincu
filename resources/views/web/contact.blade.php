@@ -41,8 +41,12 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-6 py-3">
-                                            <input type="text" placeholder="@lang('home.Enter_Your_Name')" name="name" value="{{old('name')}}">
-                                            <span class="text-danger">{{$errors->first('name')}}</span>
+                                            <input type="text" placeholder="@lang('home.Frist_Name')" name="first_name" value="{{old('name')}}">
+                                            <span class="text-danger">{{$errors->first('first_name')}}</span>
+                                        </div>
+                                        <div class="col-6 py-3">
+                                            <input type="text" placeholder="@lang('home.Last_Name')" name="last_name" value="{{old('name')}}">
+                                            <span class="text-danger">{{$errors->first('last_name')}}</span>
                                         </div>
                                         <div class="col-6 py-3">
                                             <input type="email" placeholder="@lang('home.Enter_Your_email')" name="email" value="{{old('email')}}">
@@ -52,10 +56,7 @@
                                             <input type="text" placeholder="@lang('home.phone_number')" name="phone" value="{{old('phone')}}">
                                             <span class="text-danger">{{$errors->first('phone')}}</span>
                                         </div>
-                                        <div class="col-6 py-3">
-                                            <input type="text" placeholder="Country name" name="country" value="{{old('country')}}">
-                                            <span class="text-danger">{{$errors->first('country')}}</span>
-                                        </div>
+                                     
                                         <div class="col-12 py-3">
                                             <textarea name="message" id="" cols="30" rows="10" placeholder="@lang('home.write_yout_message')">{{old('message')}}</textarea>
                                         </div>

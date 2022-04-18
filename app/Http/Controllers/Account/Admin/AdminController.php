@@ -51,6 +51,11 @@ class AdminController extends Controller
 
     }
 
+    public function contactShow($id){
+        $data['contact'] = Contact::findOrFail($id);
+        return view('account.admin.contract.show',$data);
+    }
+
     public function subscribe()
     {
         $data['subscribelist'] = Subscribe::get();

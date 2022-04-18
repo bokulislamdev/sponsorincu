@@ -1,20 +1,20 @@
 @media only screen and (max-width:1200px) {
-    .menubar > ul > li > a {
+    /* .menubar > ul > li > a {
         padding: 8px 16px;
-    }
+    } */
 
-    .menubar > ul > li > a {
+    /* .menubar > ul > li > a {
         padding: 8px 10px;
-    }
+    } */
     
 
 }
 
 
 @media only screen and (max-width:991px) {
-    .menubar ul li a {
+    /* .menubar ul li a {
         padding: 15px 9px;
-    }
+    } */
 
     .copyright-left {
         text-align: center;
@@ -26,6 +26,9 @@
     }
     .client-section .slick-dots{
         display: none !important;
+    }
+    .become-sponsor-request-info {
+        border-top: none;
     }
 
 }
@@ -107,6 +110,45 @@
     }
     .logo-image a img {
         width: 130px;
+    }
+    .become-sponsor-head h4{
+        font-size: 32px;
+    }
+    .become-sponsor-head h6{
+        font-size: 18px;
+    }
+    .become-sponsor-head p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 26px;
+    }
+    .become-sponsor-box h6{
+        font-size: 18px;
+    }
+    .become-sponsor-box h4{
+        font-size: 30px;
+    }
+    .sponsor-contact h4{
+        font-size: 30px;
+    }
+    .sponsor-contact h6{
+        font-size: 16px;
+    }
+    .sponsor-contact a{
+        font-size: 14px;
+    }
+    .become-sponsor-request-form h3{
+        font-size: 30px;
+    }
+    .become-sponsor-request-form h6{
+        font-size: 16px;
+    }
+    .become-sponsor-request-info h2 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .become-sponsor-request-info a{
+        font-size: 16px;
     }
 }
 

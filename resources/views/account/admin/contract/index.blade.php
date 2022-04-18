@@ -22,13 +22,9 @@
                 <tr>
                     <th>#SL</th>
                     <th>Name</th>
-
-
                     <th>Email</th>
-                   
+                    <th>Phone</th>
                     <th>Message</th>
-                  
-
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -36,22 +32,14 @@
                 @foreach ($contract as $item)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$item->name}}</td>
+                    <td>{{$item->first_name}} {{$item->last_name}}</td>
                     <td>{{$item->email}}</td>
-                   
+                    <td>{{$item->phone}}</td>
                     <td>{{$item->message}}</td>
-
-
-
-
-
-
-
-
                     <td>
                     <div class="table-actions d-flex align-items-center gap-3 fs-6">
 
-
+                        <a href="{{route('admin.contract.show',$item->id)}}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Views" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
 
                         <form id="delete-form" action="{{route('admin.contract.destroy',$item->id)}}" method="GET">
                             @csrf

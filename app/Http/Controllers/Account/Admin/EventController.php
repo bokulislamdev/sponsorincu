@@ -18,7 +18,7 @@ class EventController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $topics = EventTopic::where('id',$request->id)->get();
+            $topics = EventTopic::where('event_type_id',$request->id)->get();
             return $topics;
         }
 
@@ -97,7 +97,7 @@ class EventController extends Controller
             'name' => 'required',
             'address' => 'required',
             'event_type_id' => 'required',
-            'event_topic_id' => 'required',
+            // 'event_topic_id' => 'required',
             'date' => 'required',
             'description' => 'required',
             'aspect_attendance' => 'required',

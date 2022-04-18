@@ -611,6 +611,74 @@
             </div>
         </section>
         <!--    MARKETING SECTION END-->
+        
+            <!--    SERVICE SECTION-->
+    <section class="service-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h4>@lang('home.Our_Services')</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-4">
+                    <div class="service-box">
+                        <a href="{{route('service')}}">
+                            <img src="{{asset('web')}}/images/service/1.png" alt="">
+                        </a>
+                        <div class="service-text">
+                            <h4>@lang('home.service_li6')</h4>
+                            <p>
+                                @lang('home.Event_marketing_is')
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-4">
+                    <div class="service-box">
+                        <a href="{{route('service')}}">
+                            <img src="{{asset('web')}}/images/service/2.png" alt="">
+                        </a>
+                        <div class="service-text">
+                            <h4>@lang('home.Ads')</h4>
+                            <p>
+                                @lang('home.Ads_li1')
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-4">
+                    <div class="service-box">
+                        <a href="{{route('service')}}">
+                            <img src="{{asset('web')}}/images/service/3.png" alt="">
+                        </a>
+                        <div class="service-text">
+                            <h4>@lang('home.Sponsoring_non_profit')</h4>
+                            <p>
+                                @lang('home.Sponsoring_non_profit_li1')
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-4">
+                    <div class="service-box">
+                        <a href="{{route('service')}}">
+                            <img src="{{asset('web')}}/images/service/4.png" alt="">
+                        </a>
+                        <div class="service-text">
+                            <h4>@lang('home.sponsoring_influencers')</h4>
+                            {{-- <p>
+                                @lang('home.event_marketing_p')
+                            </p> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--    SERVICE SECTION END-->
 
     {{-- @include('web.component.subscribe');  --}}
 

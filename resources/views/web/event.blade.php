@@ -34,9 +34,15 @@ $locale = app()->getLocale();
                             <div class="py-2">
                                 <label for="#">@lang('home.Event_Type')</label>
                                 <select name="type" id="event_type_id" onchange="getEventToptic()">
-                                    <option value="">select</option>
+                                    <option value="">@lang('home.select')</option>
                                     @foreach ($event_type as $item)
-                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                    <option value="{{$item->id}}">
+                                             @if ($locale == 'en')
+                                            {{$item->name}}
+                                            @else
+                                            {{$item->name_ar}}
+                                            @endif
+                                    </option>
                                     @endforeach
                                     
                                 </select>
@@ -44,7 +50,7 @@ $locale = app()->getLocale();
                             <div class="py-2">
                                 <label for="#">@lang('home.Event_Topic')</label>
                                 <select name="topic" id="event_topic">
-                                    <option value="">select</option>
+                                    <option value="">@lang('home.select')</option>
                                 </select>
                             </div>
                             <div class="py-2">
@@ -106,39 +112,75 @@ $locale = app()->getLocale();
 
 
 @endsection
-
 @push('js')
+@if ($locale == 'en')
+
 
     <script>
             function getEventToptic() {
-        var event_type_id = $("#event_type_id").val()
-
-        if (event_type_id) {
-            $.ajax({
-                url: `{{ route('event.topic.get') }}`,
-                data: {
-                    id: event_type_id
-                },
-                success: function(res) {
-                    console.log(res)
-                    $("#event_topic").empty()
-                    var options = '';
-                    $.each(res, function(index, row) {
-                        options += "<option value='" + row.id + "'>" + row.name + "</option>";
-                    })
-                    console.log(options)
-                    $("#event_topic").append(options);
-                },
-                error: function(e) {
-                    console.log(e);
-                    toastr.error('Something went wrong, please see the console')
+                var event_type_id = $("#event_type_id").val()
+        
+                if (event_type_id) {
+                    $.ajax({
+                        url: `{{ route('event.topic.get') }}`,
+                        data: {
+                            id: event_type_id
+                        },
+                        success: function(res) {
+                            console.log(res)
+                            $("#event_topic").empty()
+                            var options = '';
+                            $.each(res, function(index, row) {
+                                options += "<option value='" + row.id + "'>" + row.name + "</option>";
+                            })
+                            console.log(options)
+                            $("#event_topic").append(options);
+                        },
+                        error: function(e) {
+                            console.log(e);
+                            toastr.error('Something went wrong, please see the console')
+                        }
+                    });
+        
+                    return;
                 }
-            });
-
-            return;
-        }
-    }
+            }
 
     </script>
-@endpush()
 
+@elseif ($locale == 'ar')
+
+ <script>
+            function getEventToptic() {
+                var event_type_id = $("#event_type_id").val()
+        
+                if (event_type_id) {
+                    $.ajax({
+                        url: `{{ route('event.topic.get') }}`,
+                        data: {
+                            id: event_type_id
+                        },
+                        success: function(res) {
+                            console.log(res)
+                            $("#event_topic").empty()
+                            var options = '';
+                            $.each(res, function(index, row) {
+                                options += "<option value='" + row.id + "'>" + row.name_ar + "</option>";
+                            })
+                            console.log(options)
+                            $("#event_topic").append(options);
+                        },
+                        error: function(e) {
+                            console.log(e);
+                            toastr.error('Something went wrong, please see the console')
+                        }
+                    });
+        
+                    return;
+                }
+            }
+
+    </script>
+
+@endif
+@endpush

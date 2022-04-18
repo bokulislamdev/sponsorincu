@@ -144,3 +144,9 @@
     margin-right: 0;
     margin-left: 20px;
 }
+.service-text p{
+    text-align: right;
+}
+.become-sponsor-request-form input{
+    text-align: right;
+}

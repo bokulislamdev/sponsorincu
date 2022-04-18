@@ -7,7 +7,7 @@
                         <div class="footer-head">
                             <div class="logo mb-3">
                                 <a href="{{route('homepage')}}">
-                                    <img src="{{asset('web')}}/images/logo/logo2.png" alt="">
+                                    <img src="{{ asset($websetting->logo) }}" alt="">
                                 </a>
                             </div>
                             <p>

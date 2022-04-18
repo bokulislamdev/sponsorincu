@@ -8,7 +8,7 @@
                         <div class="col-12 col-xl-2">
                             <div class="logo-image d-flex justify-content-between align-items-center">
                                 <a href="{{route('homepage')}}">
-                                    <img src="{{asset('web')}}/images/logo/logo2.png" alt="">
+                                    <img src="{{ asset($websetting->logo) }}" alt="">
                                 </a>
                                                                <div class="d-xl-none">
                                     @if ($locale == 'en')
@@ -43,6 +43,16 @@
                                         <li>
                                             <a href="{{route('event')}}" class="">
                                                 @lang('home.Discover_Events')
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('become.sponsor')}}" class="">
+                                                Become Sponsor
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('contact')}}" class="">
+                                                @lang('home.Contact_Us')
                                             </a>
                                         </li>
                                         <li class="sub-btn no-border">
@@ -82,11 +92,7 @@
                                             </div>
                                           </li>
 
-                                        <li>
-                                            <a href="{{route('contact')}}" class="">
-                                                @lang('home.Contact_Us')
-                                            </a>
-                                        </li>
+                                     
                                         <li>
                                             
                                             {{-- <a href="#" class="login-button-home">

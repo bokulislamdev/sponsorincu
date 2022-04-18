@@ -36,6 +36,7 @@ Route::namespace('Web')->group(function () {
     Route::get('/single-event-topic/{slug}', 'WebController@singleTopic')->name('single.topic');
     Route::get('/single-event-type/{slug}', 'WebController@singleEventType')->name('single.event.type');
     Route::get('/get/topic', 'WebController@eventTopicGet')->name('event.topic.get');
+    Route::get('/become-sponsor', 'WebController@becomeSponsor')->name('become.sponsor');
     
 
 });

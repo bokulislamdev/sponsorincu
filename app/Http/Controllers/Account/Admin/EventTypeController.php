@@ -52,7 +52,7 @@ class EventTypeController extends Controller
         $data->fill($input)->save();
 
         Notify::success('Event Type Create Successfully!');
-        return redirect()->url('admin.event-type.index');
+        return redirect()->route('admin.event-type.index');
     }
 
     /**
